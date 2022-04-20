@@ -1,0 +1,15 @@
+.paginator {
+    display: flex;
+
+
+    .paginator-page {
+        &.active{
+            color: green;
+            font-weight: bold;
+        }
+        border: 1px solid #2222;
+        padding: 5px;
+        margin-right: 4px;
+        cursor: pointer;
+    }
+}

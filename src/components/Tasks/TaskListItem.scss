@@ -1,0 +1,50 @@
+.task_list-item {
+    border: 1px solid #2222;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.task_details {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+        &.task_details-description{
+            width: 100%;
+        }
+        width: calc(100%/3);
+        margin-top: 10px;
+        span {
+            font-weight: bold;
+        }
+    }
+}
+.error {
+    font-size: 24px;
+    text-align: center;
+    color: red;
+}
+.loading {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    &:after{
+        content: " ";
+        display: block;
+        width: 45px;
+        height: 45px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid currentColor;
+        border-color: currentColor transparent currentColor transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,22 @@
+button{
+    &:hover{
+        background-color: #3ec44c;
+    }
+    &:disabled{
+        background-color: #7e7e7e;
+    }
+    float: right;
+    background-color: #42cf50;
+    border: 1px solid;
+    color: white;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+}
+.spaseBetween{
+    display: flex;
+    justify-content: space-between;
+}
+*{
+    box-sizing: border-box;
+}

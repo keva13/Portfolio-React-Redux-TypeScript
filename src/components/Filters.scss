@@ -1,0 +1,18 @@
+.filters {
+    display: flex;
+    margin-bottom: 20px;
+    
+    .field {
+        &:first-letter{
+            text-transform: uppercase;
+        }
+        &.active{
+            color: green;
+            font-weight: bold;
+        }
+        border: 1px solid #222222;
+        margin-right: 5px;
+        padding: 3px;
+        cursor: pointer;        
+    }
+}
