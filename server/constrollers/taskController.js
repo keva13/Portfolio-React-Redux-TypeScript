@@ -6,8 +6,7 @@ const path = require("path")
 class TaskController {
 
     async getTasks(req, res) {
-        let {limit = 3, page = 1, sort_direction =  "asc", sort_field = "id"} = req.body;
-        console.log(req.body)
+        let {limit = 3, page = 1, sort_direction =  "asc", sort_field = "id"} = req.query;
         let offset = page * limit - limit;
 
         const tasks = await Tasks.findAndCountAll({limit, offset, order: [[sort_field, sort_direction]]})
@@ -28,12 +27,9 @@ class TaskController {
     async createTask(req, res, next) {
         let pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         let filename;
-        console.log(req.body)
         let { email, username, text, status } = req.body
-        console.log(req.files)
         if (req.files?.img) {
             const {img} = req.files
-            console.log(img)
             filename = uuid.v4() + ".jpg";
             img.mv(path.resolve(__dirname, "..", "static", filename))
         }
@@ -51,13 +47,10 @@ class TaskController {
 
     async updateTask(req, res) {
         let filename;
-        console.log(req.body)
         let {id} = req.params
         let { text, status } = req.body
-        console.log(req.files)
         if (req.files?.img) {
             const {img} = req.files
-            console.log(img)
             filename = uuid.v4() + ".jpg";
             img.mv(path.resolve(__dirname, "..", "static", filename))
         }
