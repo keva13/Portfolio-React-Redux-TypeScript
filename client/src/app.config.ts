@@ -1,7 +1,7 @@
 
  class AppConfig {
     public readonly developer = 'Yuri_Voluykevich';
-    public readonly apiUrl = 'https://uxcandy.com/~shapoval/test-task-backend/';
+    public readonly apiUrl = 'http://5.58.29.138:5000/api/';
   }
   
 export default new AppConfig()

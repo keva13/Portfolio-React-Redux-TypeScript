@@ -11,9 +11,9 @@ export const fetchTasks = (data:FetchTasksRequest) =>{
         try {
             dispatch({type: TaskActionTypes.FETCH_TASKS})
             data.developer = AppConfig.developer;
-            const response = await axios.get(AppConfig.apiUrl, {params: data});
-            if (response.data.status !== "error") 
-                dispatch({type: TaskActionTypes.FETCH_TASKS_SUCCES, payload: response.data.message.tasks, taskCount: response.data.message.total_task_count})
+            const response = await axios.get(AppConfig.apiUrl+"task/", {params: data});
+            if (!response.data.message) 
+                dispatch({type: TaskActionTypes.FETCH_TASKS_SUCCES, payload: response.data.rows, taskCount: response.data.count})
             else
                 dispatch({type: TaskActionTypes.FETCH_TASKS_ERROR, payload: response.data.message})
         } catch (error) {
@@ -38,7 +38,7 @@ export const updateTasks: any = (data:UpdateTasksRequest) =>{
             form_data.append("token", data.token);
 
              
-            return axios.post(AppConfig.apiUrl + "/edit/" + data.id + "/?developer=" + AppConfig.developer,form_data).then((response)=>{
+            return axios.put(AppConfig.apiUrl + "/task/" + data.id + "/?developer=" + AppConfig.developer,form_data).then((response)=>{
                 if (response.data.status !== "error") {
                     toast.success('Success',{position: "bottom-right"});
                     dispatch({type: TaskActionTypes.TASKS_UPDATE, payload: data})
@@ -64,7 +64,7 @@ export const createTask: any = (data:TaskType) =>{
                 return encodeURIComponent(q[0]) + "=" + encodeURIComponent(q[1])
             })
              
-            return axios.post(AppConfig.apiUrl + "create/?developer=" + AppConfig.developer,form_data).then((response)=>{
+            return axios.post(AppConfig.apiUrl + "task/?developer=" + AppConfig.developer,form_data).then((response)=>{
                 if (response.data.status !== "error") {
                     toast.success('Success',{position: "bottom-right"});
                     //dispatch({type: TaskActionTypes.TASKS_CREATE, payload: data})

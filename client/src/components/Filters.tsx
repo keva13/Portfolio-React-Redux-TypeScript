@@ -12,7 +12,7 @@ const Filters: React.FC<{
     
     function getDirectionIcon(mapField:string) {
         if (mapField == field) {
-            return direction == TaskRequestTypes_sort_direction.ASC ? "↑" : "↓"
+            return direction == TaskRequestTypes_sort_direction.ASC ? "↓" : "↑"
         }
         return "↓";
     }
@@ -24,7 +24,7 @@ const Filters: React.FC<{
             else 
                 directionCallback(TaskRequestTypes_sort_direction.ASC)
         } else {
-            directionCallback(TaskRequestTypes_sort_direction.DESC)
+            directionCallback(TaskRequestTypes_sort_direction.ASC)
             fieldCallback(TaskRequestTypes_sort_field[mapField.toUpperCase() as keyof typeof TaskRequestTypes_sort_field])
         }
     }

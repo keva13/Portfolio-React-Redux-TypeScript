@@ -11,7 +11,7 @@ const TaskList: React.FC = () => {
     const { tasks, taskCount, error, loading } = useTypedSelector(state => state.tasks)
     const { fetchTasks } = useActions()
     let [page, setPage] = useState(1)
-    let [sortDirection, setDirection] = useState(TaskRequestTypes_sort_direction.DESC)
+    let [sortDirection, setDirection] = useState(TaskRequestTypes_sort_direction.ASC)
     let [sortField, setField] = useState(TaskRequestTypes_sort_field.ID)
 
     const getTasks = () => {
